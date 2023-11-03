@@ -1,24 +1,24 @@
 from abc import ABC
-from small_data.Student import Student
 from typing import Iterable
+from small_data.Teacher import Teacher
 
 
-class StudentGroup(Iterable, ABC, Student):
+class TeachersGroup(Iterable[Teacher], ABC):
 
-    def __init__(self, students):
-        self.students = students
+    def __init__(self, teacher):
+        self.teacher = teacher
 
     """
     Метод получения студента
     """
-    def getStudents(self):
-        return self.students
+    def getTeachers(self):
+        return self.teacher
 
     """
     Строчный метод вывода информации о студенте
     """
     def __str__(self):
-        return "StudentGroup" + "students=" + str(self.students)
+        return "TeachersGroup" + "teachers=" + str(self.teacher) + ""
 
     """
     Итерация

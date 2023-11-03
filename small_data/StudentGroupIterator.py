@@ -1,7 +1,5 @@
-from abc import ABC
-
 from small_data.Student import Student
-from typing import List, Iterable
+from typing import List
 
 from small_data.StudentGroup import StudentGroup
 

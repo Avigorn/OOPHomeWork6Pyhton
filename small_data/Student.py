@@ -19,7 +19,7 @@ class Student(User):
     Строчный метод для вывода информации о студенте в консоль
     """
     def __str__(self):
-        return (f"studentId='{self.__student_id}, firstName='{super().getFirstName()}', "
+        return (f"Student: studentId='{self.__student_id}, firstName='{super().getFirstName()}', "
                 f"surName='{super().getSurname()}', patronymic='{super().getPatronymic()}'")
 
     """
