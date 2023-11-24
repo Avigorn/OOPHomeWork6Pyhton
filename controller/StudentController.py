@@ -5,17 +5,18 @@ from view.StudentView import StudentView
 
 
 class StudentController(UserController):
-
+    """
+    Класс задающий основные параметры студенту
+    Liskov Substitution
+    """
     __data_service: StudentService = []
 
     __student_group_service: StudentGroupService = []
 
     __student_view: StudentView = []
 
-    """
-    класс задающий основные параметры студенту
-    """
-    def create(self, first_name, surname, patronymic):
+    def __init__(self, first_name, surname, patronymic):
+        super().__init__(patronymic, surname, first_name)
         self.__data_service.create(first_name, surname, patronymic)
         self.__student_view.sendOnConsole(self.__data_service.getAll())
 

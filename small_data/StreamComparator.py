@@ -1,7 +1,13 @@
+from abc import ABC
+
 from small_data.Stream import Stream
 
 
-class StreamComparator(Stream):
+class StreamComparator(Stream, ABC):
+
+    """
+    Open-Closed
+    """
 
     @staticmethod
     def compare(o1: Stream, o2: Stream) -> int:

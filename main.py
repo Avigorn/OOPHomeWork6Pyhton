@@ -7,25 +7,26 @@ from small_data.Teacher import Teacher
 from small_data.TeacherGroupIterator import TeacherGroupIterator
 from small_data.TeachersGroup import TeachersGroup
 
-"""
-Класс тестового запуска Итератора
-"""
-
 
 def testIterator(student_group: StudentGroup, teachers_group: TeachersGroup):
+    """
+    Метод тестового запуска Итератора
+    Open-Closed
+    """
+
     student_group_iterator = StudentGroupIterator(student_group)
     teachers_group_iterator = TeacherGroupIterator(teachers_group)
     while student_group_iterator.hasNext() or teachers_group_iterator.hasNext():
-        print(student_group_iterator.next())
-        print(teachers_group_iterator.next())
-
-
-"""
-Головной класс выводящий в консоль результат работы всех прочих классов
-"""
+        print(student_group_iterator.__next__())
+        print(teachers_group_iterator.__next__())
 
 
 class Main:
+    """
+    Головной класс выводящий в консоль результат работы всех прочих классов
+    Single Responsibility
+    """
+
     student1 = Student("Ivan", "Ivanov", "Ivanovich", 1)
     student2 = Student("Alexandr", "Alexandrovich", "Alexandrov", 2)
     student3 = Student("Petr", "Petrov", "Petrovich", 3)

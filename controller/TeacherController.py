@@ -4,14 +4,14 @@ from view.TeacherView import TeacherView
 
 
 class StudentController(UserController):
-
-    __data_service: TeacherService = []
-
-    __teacher_view: TeacherView = []
-
     """
     Класс задающий основные параметры учителю
+    Liskov Substitution
     """
-    def create(self, first_name, surname, patronymic):
+    __data_service: TeacherService = []
+    __teacher_view: TeacherView = []
+
+    def __init__(self, first_name, surname, patronymic):
+        super().__init__(patronymic, surname, first_name)
         self.__data_service.create(first_name, surname, patronymic)
         self.__student_view.sendOnConsole(self.__data_service.getAll())

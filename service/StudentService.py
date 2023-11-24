@@ -6,21 +6,24 @@ from small_data.Student import Student
 
 class StudentService(UserService):
 
+    """
+    Liskov Substitution
+    """
+
     def __init__(self):
+        self.__students = List[Student]
         self.__students = []
 
-    __students = List[Student]
-
-    """
-    Метод для получения списка студентов
-    """
     def getAll(self):
+        """
+        Метод для получения списка студентов
+        """
         return self.__students
 
-    """
-    Метод перебирающий студентов основываясь на их параметрах
-    """
     def create(self, first_name, surname, patronymic):
+        """
+        Метод перебирающий студентов основываясь на их параметрах
+        """
         count_max_id = 0
         for student in self.__students:
             if student.get_student_id() > count_max_id:

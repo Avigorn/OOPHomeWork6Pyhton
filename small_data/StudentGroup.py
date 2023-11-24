@@ -3,25 +3,23 @@ from small_data.Student import Student
 from typing import Iterable
 
 
-class StudentGroup(Iterable, ABC, Student):
+class StudentGroup(Iterable[Student], ABC):
+
+    """
+    Liskov Substitution
+    """
 
     def __init__(self, students):
         self.students = students
 
-    """
-    Метод получения студента
-    """
     def getStudents(self):
+        """
+        Метод получения студента
+        """
         return self.students
 
-    """
-    Строчный метод вывода информации о студенте
-    """
-    def __str__(self):
-        return "StudentGroup" + "students=" + str(self.students)
-
-    """
-    Итерация
-    """
     def __iter__(self):
+        """
+        Итерация
+        """
         return self

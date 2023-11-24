@@ -5,12 +5,7 @@ class UserService:
 
     """
     Основной класс получения пользователей
+    Single Responsibility
     """
     def getAll(self) -> List:
-        pass
-
-    """
-    Класс содержащий основный аргументы пользователя
-    """
-    def create(self, first_name, surname, patronymic) -> None:
         pass

@@ -10,15 +10,9 @@ class StudentView(UserView):
     """
     logger = logging.getLogger(__name__)
 
-    """
-    Метод передающий в консоль записанную информацию о студентах
-    """
     def sendOnConsole(self, students):
+        """
+        Метод передающий в консоль записанную информацию о студентах
+        """
         for user in students:
             self.logger.info(user.__str__())
-
-    """
-    Метод передающий в консоль записанную информацию о группе студентов
-    """
-    def sendOnConsoleUserGroup(self, student_group):
-        self.logger.info(student_group.__str__())

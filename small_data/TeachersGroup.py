@@ -5,23 +5,27 @@ from small_data.Teacher import Teacher
 
 class TeachersGroup(Iterable[Teacher], ABC):
 
+    """
+    Interface Segregation
+    """
+
     def __init__(self, teacher):
         self.teacher = teacher
 
-    """
-    Метод получения студента
-    """
     def getTeachers(self):
+        """
+        Метод получения студента
+        """
         return self.teacher
 
-    """
-    Строчный метод вывода информации о студенте
-    """
     def __str__(self):
+        """
+        Строчный метод вывода информации о студенте
+        """
         return "TeachersGroup" + "teachers=" + str(self.teacher) + ""
 
-    """
-    Итерация
-    """
     def __iter__(self):
+        """
+        Итерация
+        """
         return self

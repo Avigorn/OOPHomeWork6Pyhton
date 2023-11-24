@@ -8,30 +8,32 @@ from small_data.Teacher import Teacher
 
 # noinspection PyArgumentList
 class StudentGroupService:
-    __student_group: StudentGroup
+
+    """
+    Single Responsibility
+    """
 
     def __init__(self):
+        self.__student_group = None
         self.students = None
-
-    """
-    Метод создания группы студентов с использование класса Student
-    """
+        self.__student_group: StudentGroup
 
     def createStudentGroup(self, teacher: Teacher, students: List[Student]):
+        """
+        Метод создания группы студентов с использованием класса Student
+        """
         self.__student_group = StudentGroup(teacher, students)
 
-    """
-    Метод получения группы студентов
-    """
-
     def getStudentGroup(self):
+        """
+        Метод получения группы студентов
+        """
         return self.__student_group
 
-    """
-    Метод получения конкретного студента из группы
-    """
-
     def getStudentFromStudentGroup(self, firstname, surname):
+        """
+        Метод получения конкретного студента из группы
+        """
         iterate: Iterator[Student] = self.__student_group.__iter__()
         result: List[Student] = []
         while True:
@@ -47,20 +49,11 @@ class StudentGroupService:
                 raise ValueError("Найдено более одного студента с указанными именем и фамилией")
             return result[0]
 
-    """
-    Сортировка группы студентов
-    """
-
     def getSortedStudentGroup(self):
+        """
+        Сортировка группы студентов
+        """
         self.students: List[Student] = list(self.__student_group.getStudents())
         self.students.sort()
         return self.students
 
-    """
-    Сортировка студентов по ФИО внутри группы
-    """
-
-    def getSortedByFIOStudentGroup(self):
-        self.students: List[Student] = list(self.__student_group.getStudents())
-        self.students.sort(StudentComparator())
-        return self.students

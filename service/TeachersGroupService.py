@@ -1,36 +1,37 @@
 from typing import List, Iterator
 
-from small_data.Student import Teacher
 from small_data.Teacher import Teacher
 from small_data.TeachersGroup import TeachersGroup
 
 
 # noinspection PyArgumentList
 class TeachersGroupService:
-    __teachers_group: TeachersGroup
+
+    """
+    Interface Segregation
+    """
 
     def __init__(self):
+        self.__teachers_group = None
         self.teachers = None
-
-    """
-    Метод создания листа преподавателей с использование класса Teacher
-    """
+        self.__teachers_group: TeachersGroup
 
     def createTeachersGroup(self, teacher: Teacher, students: List[Teacher]):
+        """
+        Метод создания листа преподавателей с использованием класса Teacher
+        """
         self.__teachers_group = TeachersGroup(teacher, students)
 
-    """
-    Метод получения группы преподавателей
-    """
-
     def getTeachersGroup(self):
+        """
+        Метод получения группы преподавателей
+        """
         return self.__teachers_group
 
-    """
-    Метод получения конкретного преподавателя из списка
-    """
-
     def getTeacherFromStudentGroup(self, firstname, surname):
+        """
+        Метод получения конкретного преподавателя из списка
+        """
         iterate: Iterator[Teacher] = self.__teachers_group.__iter__()
         result: List[Teacher] = []
         while True:
@@ -46,20 +47,10 @@ class TeachersGroupService:
                 raise ValueError("Найдено более одного преподавателя с указанными именем и фамилией")
             return result[0]
 
-    """
-    Сортировка группы преподавателей
-    """
-
     def getSortedTeachersGroup(self):
+        """
+        Сортировка группы преподавателей
+        """
         self.teachers: List[Teacher] = list(self.__teachers_group.getTeachers())
         self.teachers.sort()
-        return self.teachers
-
-    """
-    Сортировка преподавателей по ФИО внутри группы
-    """
-
-    def getSortedByFIOTeachersGroup(self):
-        self.teachers: List[Teacher] = list(self.__teachers_group.getTeachers())
-        self.teachers.sort(TeachersComparator())
         return self.teachers

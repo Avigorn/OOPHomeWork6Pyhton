@@ -3,6 +3,10 @@ from small_data.Student import Student
 
 class StudentComparator(Student):
 
+    """
+    Open-Closed
+    """
+
     @staticmethod
     def compare(o1: Student, o2: Student) -> int:
         result_of_comparing = o1.getSurname().compare_to(o2.getSurname())

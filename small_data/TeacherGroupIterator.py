@@ -1,28 +1,30 @@
 from small_data.Teacher import Teacher
-from typing import List
+from typing import List, Iterator
 
 from small_data.TeachersGroup import TeachersGroup
 
 
-class TeacherGroupIterator(Teacher):
-    __counter: int
+class TeacherGroupIterator(Iterator[Teacher]):
 
-    _teachers: List[Teacher]
+    """
+    Dependency Inversion
+    """
 
     def __init__(self, teacher_group: TeachersGroup):
         self._teachers = teacher_group.getTeachers()
         self.__counter = 0
+        self._teachers: List[Teacher]
 
-    """
-    Метод получения следующего значения счётчика по отношению к преподавателю
-    """
     def hasNext(self):
+        """
+        Метод получения следующего значения счётчика по отношению к преподавателю
+        """
         return self.__counter < len(self._teachers)
 
-    """
-    Метод создания следующего значения счётчика по отношению к преподавателю
-    """
-    def next(self):
+    def __next__(self):
+        """
+        Метод создания следующего значения счётчика по отношению к преподавателю
+        """
         if not self.hasNext():
             return None
         self.__counter += 1
