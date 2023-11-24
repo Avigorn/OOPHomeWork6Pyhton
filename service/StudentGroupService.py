@@ -48,12 +48,3 @@ class StudentGroupService:
             if len(result) != 1:
                 raise ValueError("Найдено более одного студента с указанными именем и фамилией")
             return result[0]
-
-    def getSortedStudentGroup(self):
-        """
-        Сортировка группы студентов
-        """
-        self.students: List[Student] = list(self.__student_group.getStudents())
-        self.students.sort()
-        return self.students
-
